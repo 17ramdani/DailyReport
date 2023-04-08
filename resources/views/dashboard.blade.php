@@ -1,17 +1,21 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('layout.header')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
+@section('content')
+<div id="wrapper">
+    @include('layout.sidebar')
+    <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+            @include('layout.navbar')
+            <div class="container-fluid" id="container-wrapper">
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">Wellcome!</h1>
+                </div>
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h3 class="h6 mb0 text-gray-800">You're logged in!</h3>
                 </div>
             </div>
         </div>
+        @include('layout.footer')
     </div>
-</x-app-layout>
+</div>
+@endsection
