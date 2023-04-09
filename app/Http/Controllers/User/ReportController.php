@@ -4,39 +4,51 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Report;
+use App\Models\ReportDetail;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class ReportController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('user.dailyReport');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $report = new Report;
+        $report->name = auth()->user()->name;
+        $report->date = $request->date;
+        $report->shift = $request->shift;
+        $report->time = $request->time;
+
+        // Simpan data ke tabel Report
+        $report->save();
+
+        // Simpan detail laporan ke tabel ReportDetail
+        $part_numbers = $request->input('part_number');
+        $desc_name_parts = $request->input('desc_name_part');
+        $batch_numbers = $request->input('batch_number');
+        $outputs = $request->input('output');
+        $deskripsis = $request->input('deskripsi');
+
+        foreach ($part_numbers as $key => $part_number) {
+            $report_detail = new ReportDetail;
+            $report_detail->report_id = $report->id;
+            $report_detail->part_number = $part_number;
+            $report_detail->desc_name_part = $desc_name_parts[$key];
+            $report_detail->batch_number = $batch_numbers[$key];
+            $report_detail->output = $outputs[$key];
+            $report_detail->deskripsi = $deskripsis[$key];
+
+            $report_detail->save();
+        }
+        Alert::success('Success ', 'Data Berhasil Disimpan');
+        return redirect()->route('report.index')->with('success', 'Laporan berhasil disimpan.');
     }
+
 
     /**
      * Display the specified resource.
