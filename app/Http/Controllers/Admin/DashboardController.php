@@ -4,17 +4,16 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\ReportDetail;
 
 class DashboardController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    public function index($id)
     {
-        //
+        $data = ReportDetail::where('report_id', $id)->get();
+
+        return view('admin.dashboard', ['reportDetail' => $data]);
     }
 
     /**

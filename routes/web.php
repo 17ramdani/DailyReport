@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\ReportController;
 use Illuminate\Support\Facades\Route;
@@ -19,7 +20,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//User
+//admin
+Route::get('/admin', [DashboardController::class, 'index'])->name('admin.index');
 
 
 
@@ -29,6 +31,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    //Users
     Route::get('/dailyReport', [ReportController::class, 'index'])->name('report.index');
     Route::post('/report', [ReportController::class, 'store'])->name('report.store');
 
