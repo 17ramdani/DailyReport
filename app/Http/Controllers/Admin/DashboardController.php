@@ -9,11 +9,11 @@ use App\Models\ReportDetail;
 class DashboardController extends Controller
 {
 
-    public function index($id)
+    public function index()
     {
-        $data = ReportDetail::where('report_id', $id)->get();
 
-        return view('admin.dashboard', ['reportDetail' => $data]);
+        $data = ReportDetail::with('report')->get();
+        return view('admin.dashboard', compact('data'));
     }
 
     /**
