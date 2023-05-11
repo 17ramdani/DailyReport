@@ -5,15 +5,23 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ReportDetail;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
 
-        $data = ReportDetail::with('report')->get();
-        return view('admin.dashboard', compact('data'));
+        $date = $request->input('tanggal') ? Carbon::parse($request->input('tanggal')) : null;
+
+        if ($date) {
+            $reportDetails = ReportDetail::with('report')->whereDate('created_at', $date)->get();
+        } else {
+            $reportDetails = ReportDetail::with('report')->get();
+        }
+
+        return view('admin.dashboard', ['reportDetails' => $reportDetails, 'tanggal' => $date]);
     }
 
     /**

@@ -24,6 +24,12 @@
                                 <h6 class="m-0 font-weight-bold text-primary">DataTables</h6>
                             </div>
                             <div class="table-responsive p-3">
+                                <form action="{{ route('admin.index') }}" method="GET">
+                                    <label for="tanggal">Masukkan Tanggal:</label>
+                                    <input type="date" id="tanggal" name="tanggal">
+                                    <button type="submit">Filter</button>
+                                </form>
+
                                 <div class="button-container">
                                     <button class="btn btn-success" id="exportBtn">Export to Excel</button>
                                 </div>
@@ -58,18 +64,15 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        @foreach($data as $item)
+                                        @foreach($reportDetails as $reportDetail)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $item->report->name }}</td>
-                                            <td>{{ $item->report->date }}</td>
-                                            <td>{{ $item->report->shift }}</td>
-                                            <td>{{ $item->report->time }}</td>
-                                            <td>{{ $item->part_number }}</td>
-                                            <td>{{ $item->desc_name_part }}</td>
-                                            <!-- <td>{{ $item->batch_number }}</td>
-                                            <td>{{ $item->output }}</td>
-                                            <td>{{ $item->description }}</td> -->
+                                            <td>{{ $reportDetail->report->name }}</td>
+                                            <td>{{ $reportDetail->report->date }}</td>
+                                            <td>{{ $reportDetail->report->shift }}</td>
+                                            <td>{{ $reportDetail->report->time }}</td>
+                                            <td>{{ $reportDetail->part_number }}</td>
+                                            <td>{{ $reportDetail->desc_name_part }}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -85,6 +88,13 @@
         </div>
     </div>
     <script>
+        if (performance.navigation.type == 1) {
+            var url = new URL(window.location.href);
+            if (url.searchParams.get("tanggal") != null) {
+                url.searchParams.delete("tanggal");
+                window.location.replace(url.href);
+            }
+        }
         $(document).ready(function() {
             $('#dataTable').DataTable({
                 buttons: [{
