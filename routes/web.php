@@ -22,6 +22,7 @@ Route::get('/', function () {
 
 //admin
 Route::get('/admin', [DashboardController::class, 'index'])->name('admin.index');
+Route::get('export/excel', [DashboardController::class, 'export'])->name('export.excel');
 
 
 

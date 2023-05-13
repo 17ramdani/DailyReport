@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ReportDetail;
+use App\Exports\ExportFile;
+use Maatwebsite\Excel\Facades\Excel;
 use Carbon\Carbon;
 
 class DashboardController extends Controller
@@ -22,6 +24,11 @@ class DashboardController extends Controller
         }
 
         return view('admin.dashboard', ['reportDetails' => $reportDetails, 'tanggal' => $date]);
+    }
+
+    public function export()
+    {
+        return Excel::download(new ExportFile, 'Daily Report.xlsx');
     }
 
     /**

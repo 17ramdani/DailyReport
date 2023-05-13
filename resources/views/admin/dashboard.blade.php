@@ -30,9 +30,12 @@
                                     <button type="submit">Filter</button>
                                 </form>
 
-                                <div class="button-container">
-                                    <button class="btn btn-success" id="exportBtn">Export to Excel</button>
-                                </div>
+                                <form action="#" method="POST" name="importform" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="form-group">
+                                        <a class="btn btn-success" href="{{ route('export.excel') }}">Export Excel File</a>
+                                    </div>
+                                </form>
 
                                 <table class="table align-items-center table-flush" id="dataTable">
                                     <thead class="thead-light">
