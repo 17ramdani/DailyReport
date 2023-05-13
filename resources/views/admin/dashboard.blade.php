@@ -27,13 +27,16 @@
                                 <form action="{{ route('admin.index') }}" method="GET">
                                     <label for="tanggal">Masukkan Tanggal:</label>
                                     <input type="date" id="tanggal" name="tanggal">
-                                    <button type="submit">Filter</button>
+                                    <div>
+                                        <button class="btn btn-info" type="submit">Filter</button>
+                                    </div>
                                 </form>
 
-                                <form action="#" method="POST" name="importform" enctype="multipart/form-data">
-                                    @csrf
-                                    <div class="form-group">
-                                        <a class="btn btn-success" href="{{ route('export.excel') }}">Export Excel File</a>
+                                <form action="{{ route('export.excel') }}" method="GET">
+                                    <label for="tanggal">Masukkan Tanggal:</label>
+                                    <input type="date" id="tanggal" name="tanggal">
+                                    <div>
+                                        <button class="btn btn-success" type="submit">Export Excel File</button>
                                     </div>
                                 </form>
 

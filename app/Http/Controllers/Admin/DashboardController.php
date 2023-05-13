@@ -15,7 +15,8 @@ class DashboardController extends Controller
     public function index(Request $request)
     {
 
-        $date = $request->input('tanggal') ? Carbon::parse($request->input('tanggal')) : null;
+        $date = $request->input('tanggal') ? Carbon::parse($request->input('tanggal'))->format('Y-m-d') : null;
+
 
         if ($date) {
             $reportDetails = ReportDetail::with('report')->whereDate('created_at', $date)->get();
@@ -26,9 +27,10 @@ class DashboardController extends Controller
         return view('admin.dashboard', ['reportDetails' => $reportDetails, 'tanggal' => $date]);
     }
 
-    public function export()
+    public function export(Request $request)
     {
-        return Excel::download(new ExportFile, 'Daily Report.xlsx');
+        $tanggal = $request->query('tanggal');
+        return Excel::download(new ExportFile($tanggal), 'Daily Report ' . $tanggal . '.xlsx');
     }
 
     /**
