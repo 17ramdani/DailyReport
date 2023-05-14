@@ -8,29 +8,36 @@
     </a>
     <hr class="sidebar-divider my-0">
     <li class="nav-item active">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="/admin">
+            <i class="fas fa-fw fa-home"></i>
+            <span>Dashboard</span></a>
+    </li>
+    <hr class="sidebar-divider">
+    <li class="nav-item">
+        <a class="nav-link" href="/user-index">
             <i class="fas fa-fw fa-user"></i>
-            <span>User Page</span></a>
+            <span>Data User</span>
+        </a>
     </li>
     <hr class="sidebar-divider">
     <li class="nav-item">
-        <a class="nav-link" href="/dailyReport">
+        <a class="nav-link" href="/assembly-index">
             <i class="fas fa-fw fa-sticky-note"></i>
-            <span>Daily Report Assembly</span>
+            <span>Data Assembly</span>
         </a>
     </li>
     <hr class="sidebar-divider">
     <li class="nav-item">
-        <a class="nav-link" href="/marking">
+        <a class="nav-link" href="/marking-index">
             <i class="fas fa-fw fa-marker"></i>
-            <span>Marking</span>
+            <span>Data Marking</span>
         </a>
     </li>
     <hr class="sidebar-divider">
     <li class="nav-item">
-        <a class="nav-link" href="/packing">
+        <a class="nav-link" href="/packing-index">
             <i class="fas fa-fw fa-box-open"></i>
-            <span>Packing</span>
+            <span>Data Packing</span>
         </a>
     </li>
     <hr class="sidebar-divider">

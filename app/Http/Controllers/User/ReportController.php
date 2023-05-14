@@ -16,6 +16,16 @@ class ReportController extends Controller
         return view('user.dailyReport');
     }
 
+    public function marking()
+    {
+        return view('user.markingReport');
+    }
+
+    public function packing()
+    {
+        return view('user.packingReport');
+    }
+
     public function store(Request $request)
     {
         $report = new Report;
@@ -50,12 +60,7 @@ class ReportController extends Controller
     }
 
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         //

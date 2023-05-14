@@ -2,18 +2,36 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\ReportDetail;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Report;
 
 class DashboardController extends Controller
 {
 
     public function index()
     {
+        $usersCount = User::count();
+        $reportCount = Report::count();
+        return view('admin.dashboard', compact('usersCount', 'reportCount'));
+    }
 
+    public function assembly()
+    {
         $data = ReportDetail::with('report')->get();
-        return view('admin.dashboard', compact('data'));
+        return view('admin.assembly-index', compact('data'));
+    }
+
+    public function marking()
+    {
+        return view('admin.marking-index');
+    }
+
+    public function packing()
+    {
+        return view('admin.packing-index');
     }
 
     /**

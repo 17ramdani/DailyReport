@@ -14,6 +14,7 @@
     <link href="{{ asset ('style/assets/css/ruang-admin.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.7.0/css/buttons.dataTables.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
 </head>
 
@@ -27,6 +28,7 @@
     <script src="{{ asset('style/assets/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('style/assets/vendor/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('style/assets/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+
     <!-- <script>
         $(document).ready(function() {
             $('#dataTable').DataTable();

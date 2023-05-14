@@ -8,9 +8,9 @@
     </a>
     <hr class="sidebar-divider my-0">
     <li class="nav-item active">
-        <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-user"></i>
-            <span>User Page</span></a>
+        <a class="nav-link" href="/dashboard">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
     </li>
     <hr class="sidebar-divider">
     <li class="nav-item">
@@ -19,16 +19,14 @@
             <span>Daily Report Assembly</span>
         </a>
     </li>
-    <hr class="sidebar-divider">
     <li class="nav-item">
-        <a class="nav-link" href="/marking">
+        <a class="nav-link" href="#">
             <i class="fas fa-fw fa-marker"></i>
             <span>Marking</span>
         </a>
     </li>
-    <hr class="sidebar-divider">
     <li class="nav-item">
-        <a class="nav-link" href="/packing">
+        <a class="nav-link" href="#">
             <i class="fas fa-fw fa-box-open"></i>
             <span>Packing</span>
         </a>
