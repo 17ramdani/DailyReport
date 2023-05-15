@@ -24,9 +24,28 @@
                                 <h6 class="m-0 font-weight-bold text-primary">DataTables</h6>
                             </div>
                             <div class="table-responsive p-3">
-                                <div class="button-container">
-                                    <button class="btn btn-success" id="exportBtn">Export to Excel</button>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <form action="{{ route('assembly.index') }}" method="GET" class="d-flex align-items-center">
+                                            <div class="form-group mr-3 mb-2">
+                                                <label for="tanggal" class="mb-0">Masukkan Tanggal:</label>
+                                                <input type="date" id="tanggal" name="tanggal" class="form-control" style="width: 400px;">
+                                            </div>
+                                            <button class="btn btn-info mt-2" type="submit"><i class="fas fa-filter"></i> Filter</button>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <form action="{{ route('export.excel') }}" method="GET" class="d-flex align-items-center">
+                                            <div class="form-group mr-3 mb-2">
+                                                <label for="tanggal" class="mb-0">Masukkan Tanggal:</label>
+                                                <input type="date" id="tanggal" name="tanggal" class="form-control" style="width: 330px;">
+                                            </div>
+                                            <button class="btn btn-success mt-2" type="submit"><i class="fas fa-file-excel"></i> Export Excel File</button>
+                                        </form>
+                                    </div>
                                 </div>
+
+
 
                                 <table class="table align-items-center table-flush" id="dataTable">
                                     <thead class="thead-light">
@@ -58,18 +77,15 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        @foreach($data as $item)
+                                        @foreach($reportDetails as $reportDetail)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $item->report->name }}</td>
-                                            <td>{{ $item->report->date }}</td>
-                                            <td>{{ $item->report->shift }}</td>
-                                            <td>{{ $item->report->time }}</td>
-                                            <td>{{ $item->part_number }}</td>
-                                            <td>{{ $item->desc_name_part }}</td>
-                                            <!-- <td>{{ $item->batch_number }}</td>
-                                            <td>{{ $item->output }}</td>
-                                            <td>{{ $item->description }}</td> -->
+                                            <td>{{ $reportDetail->report->name }}</td>
+                                            <td>{{ $reportDetail->report->date }}</td>
+                                            <td>{{ $reportDetail->report->shift }}</td>
+                                            <td>{{ $reportDetail->report->time }}</td>
+                                            <td>{{ $reportDetail->part_number }}</td>
+                                            <td>{{ $reportDetail->desc_name_part }}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>

@@ -7,6 +7,9 @@ use App\Models\ReportDetail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Report;
+use App\Exports\ExportFile;
+use Maatwebsite\Excel\Facades\Excel;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -18,10 +21,26 @@ class DashboardController extends Controller
         return view('admin.dashboard', compact('usersCount', 'reportCount'));
     }
 
-    public function assembly()
+    public function assembly(Request $request)
     {
-        $data = ReportDetail::with('report')->get();
-        return view('admin.assembly-index', compact('data'));
+        // $data = ReportDetail::with('report')->get();
+        // return view('admin.assembly-index', compact('data'));
+
+        $date = $request->input('tanggal') ? Carbon::parse($request->input('tanggal'))->format('Y-m-d') : null;
+
+        if ($date) {
+            $reportDetails = ReportDetail::with('report')->whereDate('created_at', $date)->get();
+        } else {
+            $reportDetails = ReportDetail::with('report')->get();
+        }
+
+        return view('admin.assembly-index', ['reportDetails' => $reportDetails, 'tanggal' => $date]);
+    }
+
+    public function export(Request $request)
+    {
+        $tanggal = $request->query('tanggal');
+        return Excel::download(new ExportFile($tanggal), 'Daily Report ' . $tanggal . '.xlsx');
     }
 
     public function marking()

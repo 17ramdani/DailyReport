@@ -29,6 +29,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/assembly-index', [DashboardController::class, 'assembly'])->name('assembly.index');
         Route::get('/marking-index', [DashboardController::class, 'marking'])->name('marking.index');
         Route::get('/packing-index', [DashboardController::class, 'packing'])->name('packing.index');
+        Route::get('export/excel', [DashboardController::class, 'export'])->name('export.excel');
         //user CRUD
         Route::get('/user-index', [UserController::class, 'index'])->name('user.index');
         Route::get('/user-create', [UserController::class, 'create'])->name('user.create');

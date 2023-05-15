@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
+<nav class="navbar navbar-expand navbar-light  topbar mb-4 static-top" style="background-color: #005288;">
     <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
         <i class="fa fa-bars"></i>
     </button>
@@ -148,9 +148,6 @@
                 <span class="ml-2 d-none d-lg-inline text-white small">{{ Auth::user()->name }}</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <x-dropdown-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
-                </x-dropdown-link>
                 <div class="dropdown-divider"></div>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
