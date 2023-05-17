@@ -36,6 +36,7 @@
                                             <th>NIK</th>
                                             <th>Divisi</th>
                                             <th>Email</th>
+                                            <th>Role</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -48,6 +49,7 @@
                                                 <td>{{ $item->nik }}</td>
                                                 <td>{{ $item->divisi }}</td>
                                                 <td>{{ $item->email }}</td>
+                                                <td>{{ $item->role }}</td>
                                                 <td>
                                                     <a href="{{ route('user.detail', $item->id) }}" class="btn btn-primary">Edit</a>
                                                     <form action="{{ route('user.delete', $item->id) }}" method="POST" class="d-inline" id="delete-form-{{ $item->id }}">
@@ -65,6 +67,7 @@
                                             <th>NIK</th>
                                             <th>Divisi</th>
                                             <th>Email</th>
+                                            <th>Role</th>
                                             <th>Action</th>
                                         </tr>
                                     </tfoot>

@@ -26,6 +26,7 @@ class UserController extends Controller
             'name' => 'required',
             'nik' => 'required|unique:users',
             'divisi' => 'required',
+            'role' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
@@ -35,7 +36,7 @@ class UserController extends Controller
             'nik' => $request->input('nik'),
             'divisi' => $request->input('divisi'),
             'email' => $request->input('email'),
-            'role' => 'user',
+            'role' => $request->input('role'),
             'password' => bcrypt($request->input('password')),
         ]);
 
@@ -60,6 +61,7 @@ class UserController extends Controller
             'name' => 'required',
             'nik' => 'required',
             'divisi' => 'required',
+            'role' => 'required',
             'email' => 'required|email',
         ]);
 
@@ -67,6 +69,7 @@ class UserController extends Controller
         $user->nik = $validatedData['nik'];
         $user->divisi = $validatedData['divisi'];
         $user->email = $validatedData['email'];
+        $user->role = $validatedData['role'];
 
         $user->save();
         Alert::success('Success ', 'Data Berhasil Diupdate');

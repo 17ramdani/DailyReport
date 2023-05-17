@@ -48,6 +48,13 @@
                                         <label for="email">Email</label>
                                         <input type="email" class="form-control" id="email" name="email" value="{{ $data->email }}">
                                     </div>
+                                    <div class="form-group">
+                                        <label for="role">Role</label>
+                                        <select class="form-control" name="role" value="{{ $data->email }}">
+                                            <option value="user">User</option>
+                                            <option value="admin">Admin</option>
+                                        </select>
+                                    </div>
 
                                     <button type="submit" class="btn btn-primary">Update</button>
                                 </form>
