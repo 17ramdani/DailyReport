@@ -23,8 +23,6 @@ class DashboardController extends Controller
 
     public function assembly(Request $request)
     {
-        // $data = ReportDetail::with('report')->get();
-        // return view('admin.assembly-index', compact('data'));
 
         $date = $request->input('tanggal') ? Carbon::parse($request->input('tanggal'))->format('Y-m-d') : null;
 
